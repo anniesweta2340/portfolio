@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Unfollower Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=2">
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">annie sweta kaur</a>
+    <ul class="nav-links">
+      <li class="dropdown">
+        <a href="../index.html#projects">work ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="kasiey.html">kasiey — chief of staff</a></li>
+          <li><a href="executive-interviews.html">executive interviews</a></li>
+          <li><a href="instagram-unfollower.html">instagram unfollower</a></li>
+          <li><a href="shopping-agent.html">agentic shopping agent</a></li>
+        </ul>
+      </li>
+      <li><a href="../about.html">about</a></li>
+      <li><a href="#" target="_blank">resume</a></li>
+      <li><a href="#" target="_blank">linkedin</a></li>
+      <li><a href="mailto:#">email</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-page">
+    <a href="../index.html" class="back-link">← back to home</a>
+
+    <div class="project-icon hero-icon">
+      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="16" width="80" height="108" rx="14" fill="#1f1a14"/>
+        <rect x="36" y="26" width="68" height="82" rx="4" fill="#faf3e3"/>
+        <circle cx="70" cy="118" r="3" fill="#faf3e3"/>
+        <rect x="46" y="42" width="48" height="48" rx="12" fill="none" stroke="#e85d5d" stroke-width="3.5"/>
+        <circle cx="70" cy="66" r="12" fill="none" stroke="#e85d5d" stroke-width="3.5"/>
+        <circle cx="86" cy="50" r="3" fill="#e85d5d"/>
+        <line x1="50" y1="46" x2="90" y2="86" stroke="#b5a7d4" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <h1>instagram unfollower</h1>
+    <p class="tagline">a tiny python tool for who stopped following back</p>
+
+    <div class="meta-row">
+      <div><strong>role</strong>solo build</div>
+      <div><strong>stack</strong>python</div>
+      <div><strong>status</strong>open source</div>
+      <div><strong>links</strong><a href="#" target="_blank">github →</a></div>
+    </div>
+
+    <h2>the itch</h2>
+    <p>instagram tells you your follower count but not who's actually drifted away. there's a bunch of sketchy apps that do this — most of them want your password or serve ads over your social graph. i wanted something i could read the source of and run locally.</p>
+
+    <h2>what it does</h2>
+    <ul>
+      <li>parses the follower and following json files from instagram's official data export</li>
+      <li>diffs the two lists to show who you follow that doesn't follow back, and vice versa</li>
+      <li>runs entirely locally — no login, no third-party api, no ads</li>
+    </ul>
+
+    <h2>why it's on here</h2>
+    <p>it's small, but it's a good example of how i work: notice a real annoyance, realize the existing solutions are bad for a specific reason, build the smallest thing that fixes it, ship it. useful doesn't have to mean complicated.</p>
+
+    <h2>what i learned</h2>
+    <p>reading through instagram's data export format was the most interesting part — it's surprisingly rich, and there's more you could build on top of it than what i ended up shipping. a future version might add friendship trajectory over time.</p>
+  </div>
+
+  <footer>made with care · 2026</footer>
+</body>
+</html>
