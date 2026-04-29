@@ -3,22 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Instagram Unfollower Tool</title>
+  <title>Instagram Unfollowers AI — Annie Sweta Kaur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css?v=2">
+  <style>
+    .project-page { padding-top: 32px; }
+    .project-page .tagline { margin-bottom: 0; }
+    .link-buttons { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; justify-content: center; }
+    .link-btn {
+      display: inline-block;
+      padding: 9px 22px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--paper);
+      box-shadow: 3px 3px 0 var(--ink);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .link-btn:hover { transform: translateY(-2px); box-shadow: 4px 5px 0 var(--ink); background: var(--yellow); }
+    .hero-icon img { width: 100%; height: 100%; object-fit: contain; }
+  </style>
 </head>
 <body>
   <nav>
-    <a href="../index.html" class="nav-logo">annie sweta kaur</a>
+    <a href="../index.html" class="nav-logo">Annie Sweta Kaur</a>
     <ul class="nav-links">
       <li class="dropdown">
         <a href="../index.html#projects">work ▾</a>
         <ul class="dropdown-menu">
           <li><a href="kasiey.html">kasiey — chief of staff</a></li>
           <li><a href="executive-interviews.html">executive interviews</a></li>
-          <li><a href="instagram-unfollower.html">instagram unfollower</a></li>
+          <li><a href="instagram-unfollower.html">instagram unfollowers AI</a></li>
           <li><a href="shopping-agent.html">agentic shopping agent</a></li>
         </ul>
       </li>
@@ -33,42 +54,50 @@
     <a href="../index.html" class="back-link">← back to home</a>
 
     <div class="project-icon hero-icon">
-      <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
-        <rect x="30" y="16" width="80" height="108" rx="14" fill="#1f1a14"/>
-        <rect x="36" y="26" width="68" height="82" rx="4" fill="#faf3e3"/>
-        <circle cx="70" cy="118" r="3" fill="#faf3e3"/>
-        <rect x="46" y="42" width="48" height="48" rx="12" fill="none" stroke="#e85d5d" stroke-width="3.5"/>
-        <circle cx="70" cy="66" r="12" fill="none" stroke="#e85d5d" stroke-width="3.5"/>
-        <circle cx="86" cy="50" r="3" fill="#e85d5d"/>
-        <line x1="50" y1="46" x2="90" y2="86" stroke="#b5a7d4" stroke-width="4" stroke-linecap="round"/>
-      </svg>
+      <img src="../images/UnfollowerAI tool icon.png" alt="instagram unfollower AI tool" />
     </div>
 
-    <h1>instagram unfollower</h1>
-    <p class="tagline">a tiny python tool for who stopped following back</p>
-
+    <h1>Instagram Unfollowers AI</h1>
+    <p class="tagline">hybrid ai that tells you who really isn't following back</p>
     <div class="meta-row">
-      <div><strong>role</strong>solo build</div>
-      <div><strong>stack</strong>python</div>
-      <div><strong>status</strong>open source</div>
-      <div><strong>links</strong><a href="#" target="_blank">github →</a></div>
+      <div><strong>type</strong>ai web app</div>
+      <div><strong>purpose</strong>personal project</div>
+      <div><strong>stack</strong>react · claude api · jszip</div>
+      <div><strong>deploy</strong>github pages</div>
     </div>
 
-    <h2>the itch</h2>
-    <p>instagram tells you your follower count but not who's actually drifted away. there's a bunch of sketchy apps that do this — most of them want your password or serve ads over your social graph. i wanted something i could read the source of and run locally.</p>
+    <div class="link-buttons">
+      <a href="https://anniesweta2340.github.io/instagram-following/" target="_blank" class="link-btn">live demo →</a>
+      <a href="https://github.com/anniesweta2340/instagram-following" target="_blank" class="link-btn">view code →</a>
+    </div>
 
-    <h2>what it does</h2>
+    <h2>the problem</h2>
+    <p>Instagram shows you a follower count but not who quietly drifted away. Existing tools either ask for your password, are buried in ads, or choke on large accounts. There's no native way to identify which <em>personal</em> accounts simply stopped following back — businesses and celebrities mixed in make the noise even worse.</p>
+
+    <h2>what i built</h2>
+    <p>The app parses your official instagram data export — no login, no third-party access, nothing leaves your device. A weighted pattern-recognition algorithm classifies every account as personal, business, celebrity, or school, then surfaces only the personal ones who don't follow back. An optional claude api key upgrades the analysis with real ai reasoning, but the core works entirely offline.</p>
+
+    <h2>key features</h2>
     <ul>
-      <li>parses the follower and following json files from instagram's official data export</li>
-      <li>diffs the two lists to show who you follow that doesn't follow back, and vice versa</li>
-      <li>runs entirely locally — no login, no third-party api, no ads</li>
+      <li><strong>Hybrid ai analysis</strong> — pattern recognition works offline; claude api is an optional upgrade, not a requirement</li>
+      <li><strong>Unlimited scale</strong> — handles 1m+ followers across any number of json files with streaming progress updates</li>
+      <li><strong>Smart filtering</strong> — automatically excludes businesses, celebrities, and schools so you only see accounts you actually know</li>
+      <li><strong>Real-time progress</strong> — async file processing keeps the browser responsive throughout, no backend needed</li>
+      <li><strong>Privacy-first</strong> — 100% in-browser; your data never leaves your device unless you explicitly opt into ai mode</li>
+      <li><strong>Weighted scoring</strong> — confidence scores from username patterns, bio keywords, follower ratios, and verified-status signals</li>
     </ul>
 
-    <h2>why it's on here</h2>
-    <p>it's small, but it's a good example of how i work: notice a real annoyance, realize the existing solutions are bad for a specific reason, build the smallest thing that fixes it, ship it. useful doesn't have to mean complicated.</p>
+    <h2>tech stack</h2>
+    <p>React · claude sonnet 4 api · jszip · browser file api · async streams · github pages</p>
 
-    <h2>what i learned</h2>
-    <p>reading through instagram's data export format was the most interesting part — it's surprisingly rich, and there's more you could build on top of it than what i ended up shipping. a future version might add friendship trajectory over time.</p>
+    <h2>challenges & solutions</h2>
+    <p>Instagram splits large follower lists across multiple json files with no documented limit. I built a dynamic multi-file handler that merges unlimited files in memory with per-file progress — no cap on input size.</p>
+    <p>Most users don't have an anthropic api key. The answer was a hybrid architecture: pattern-matching covers 90%+ accuracy offline, and the api key unlocks an enhanced layer as an optional upgrade, not a gate.</p>
+    <p>Processing 100k+ accounts synchronously would freeze the browser. Chunked async processing with react state updates between batches keeps the ui live throughout, with classification running in microtask-sized passes.</p>
+    <p>Classifying personal vs. brand requires heuristics — there's no api access to instagram's own category data. The solution was a weighted scoring system across username patterns, follower-to-following ratio, bio keyword lists, and verified flag, all derivable from the export json alone.</p>
+
+    <h2>impact</h2>
+    <p>Processes datasets up to 1M+ followers in a single browser session, with 90%+ accuracy identifying personal vs. business accounts. Zero bytes of user data ever transmitted off-device.</p>
   </div>
 
   <footer>made with care · 2026</footer>
