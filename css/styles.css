@@ -425,6 +425,16 @@ main {
   letter-spacing: -4px;
 }
 
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
 .about-photo::before {
   content: '';
   position: absolute;
@@ -517,7 +527,7 @@ main {
 .project-page .hero-icon {
   width: 360px;
   height: 360px;
-  margin: 0 auto 48px;
+  margin: 0 auto 12px;
   filter: none;
   padding: 0;
   background: transparent;
@@ -712,6 +722,7 @@ main {
 }
 
 .project-page .action-row a {
+  display: inline-block;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -719,12 +730,29 @@ main {
   text-transform: uppercase;
   color: var(--ink);
   text-decoration: none;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 4px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 14px 32px;
   font-style: normal;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.project-page .action-row a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.project-page .action-row a:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+.project-page .action-row a.primary {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.project-page .action-row a.primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
 
 .project-page .tag-row {
   display: flex;
@@ -815,6 +843,205 @@ main {
 
 .project-page p a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
+/* ====== LINK BUTTONS — pill style shared across project pages ====== */
+.project-page .link-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 4px 0 56px;
+  justify-content: center;
+}
+
+.project-page .link-btn {
+  display: inline-block;
+  padding: 9px 22px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 3px 3px 0 var(--ink);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  font-style: normal;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-page .link-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 5px 0 var(--ink);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ====== APPROACH — 3-column research blocks ====== */
+.project-page .approach-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 24px 0 32px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.project-page .approach-card {
+  padding: 32px 24px;
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-page .approach-card:last-child { border-right: none; }
+
+.project-page .approach-card .num {
+  font-family: 'Playfair Display', 'Didot', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.project-page .approach-card h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0;
+}
+
+.project-page .approach-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* ====== KEY INSIGHTS — pull quote cards ====== */
+.project-page .insight-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+
+.project-page .insight-card {
+  padding: 36px 32px;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  font-family: 'Playfair Display', 'Didot', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--ink);
+  position: relative;
+}
+
+.project-page .insight-card::before {
+  content: '—';
+  display: block;
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 600;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+/* ====== FIGURE PAIR — two photos side by side ====== */
+.project-page .figure-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0 12px;
+}
+
+.project-page .figure-pair .figure {
+  margin: 0;
+  max-width: none;
+}
+
+/* ====== PULL QUOTE — subtle inline highlight ====== */
+.project-page .pull-quote {
+  border-left: 2px solid var(--accent);
+  padding: 6px 0 6px 24px;
+  margin: 28px 0 32px;
+  font-family: 'Playfair Display', 'Didot', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 720px;
+}
+
+/* ====== INDUSTRY PERSPECTIVE — numbered editorial blocks ====== */
+.project-page .perspective-list {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--ink);
+}
+
+.project-page .perspective-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--ink);
+  align-items: baseline;
+}
+
+.project-page .perspective-item .num {
+  font-family: 'Playfair Display', 'Didot', serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.project-page .perspective-item p {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* ====== PROJECT CONTEXT — small italic footer line ====== */
+.project-page .project-context {
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-mute);
+  margin: 56px auto 0;
+  max-width: 640px;
+  padding-top: 32px;
+  border-top: 1px solid var(--ink);
+}
+
+/* ====== TAKEAWAY BOX — highlighted pull quote ====== */
+.project-page .takeaway-box {
+  background: var(--bg-deep);
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding: 44px 48px;
+  margin: 32px auto 40px;
+  max-width: 720px;
+  text-align: center;
+  font-family: 'Playfair Display', 'Didot', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
 /* ====== FOOTER ====== */
 footer {
   text-align: center;
@@ -858,4 +1085,15 @@ footer::before {
   .meta-row > div { border-right: none; border-bottom: 1px solid var(--ink); padding: 14px 16px; }
   .meta-row > div:nth-child(odd) { border-right: 1px solid var(--ink); }
   .meta-row > div:nth-last-child(-n+2) { border-bottom: none; }
+  .project-page .approach-grid { grid-template-columns: 1fr; }
+  .project-page .approach-card { border-right: none; border-bottom: 1px solid var(--ink); }
+  .project-page .approach-card:last-child { border-bottom: none; }
+  .project-page .insight-grid { grid-template-columns: 1fr; }
+  .project-page .insight-card { font-size: 18px; padding: 28px 24px; }
+  .project-page .takeaway-box { padding: 32px 24px; font-size: 18px; }
+  .project-page .pull-quote { padding-left: 18px; font-size: 17px; }
+  .project-page .perspective-item { grid-template-columns: 56px 1fr; gap: 16px; }
+  .project-page .perspective-item .num { font-size: 24px; }
+  .project-page .perspective-item p { font-size: 16px; }
+  .project-page .figure-pair { grid-template-columns: 1fr; gap: 24px; }
 }

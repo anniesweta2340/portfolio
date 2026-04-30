@@ -3,13 +3,257 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive Interviews</title>
+  <title>Executive Interviews — Annie Sweta Kaur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css?v=3">
+  <style>
+    /* ── Executive Interviews — page-specific ── */
+
+    .interviews-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 56px 48px 140px;
+    }
+
+    /* Back link */
+    .interviews-back {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      text-decoration: none;
+      margin-bottom: 52px;
+      transition: color 0.2s;
+    }
+    .interviews-back:hover { color: var(--accent); text-decoration: none; }
+
+    /* Icon */
+    .interviews-icon {
+      width: 260px;
+      margin: 0 auto 24px;
+    }
+
+    .interviews-icon img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Page header */
+    .interviews-header {
+      text-align: center;
+      margin-bottom: 64px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .interviews-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 50px);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin: 0 0 10px;
+      text-transform: none;
+    }
+
+    .interviews-header .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--ink-mute);
+      margin: 0;
+      letter-spacing: 0.2px;
+    }
+
+    /* ── Card grid ── */
+    .interviews-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+
+    .interview-card.fireside-chat { grid-column: span 3; }
+    .interview-card.rapid-fire   { grid-column: span 2; }
+
+    /* ── Card base ── */
+    .interview-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+    }
+
+    .interview-card:hover {
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.09);
+      transform: translateY(-3px);
+    }
+
+    /* ── Image areas ── */
+    .fireside-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 340px;
+      overflow: hidden;
+    }
+
+    .rapid-images {
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .img-wrap {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+
+    .img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 0.45s ease;
+    }
+
+    .fireside-images .img-wrap:first-child img {
+      object-position: top center;
+    }
+
+    .interview-card:hover .img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .fireside-images .img-wrap + .img-wrap {
+      border-left: 1px solid rgba(26, 26, 26, 0.1);
+    }
+
+    /* ── Card body ── */
+    .card-body {
+      padding: 24px 26px 28px;
+    }
+
+    .interview-type {
+      font-family: 'Inter', sans-serif;
+      font-size: 8.5px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+      display: block;
+      margin-bottom: 13px;
+    }
+
+    .card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 21px;
+      font-weight: 700;
+      font-style: normal;
+      color: var(--ink);
+      margin: 0 0 4px;
+      line-height: 1.2;
+    }
+
+    .card-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      letter-spacing: 0.2px;
+      line-height: 1.5;
+      margin: 0 0 18px;
+    }
+
+    .card-rule {
+      height: 1px;
+      background: var(--bg-deep);
+      margin: 0 0 16px;
+    }
+
+    .card-insight {
+      margin-bottom: 0;
+    }
+
+    .card-insight p {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      line-height: 1.72;
+      color: var(--ink-soft);
+      margin: 0 0 5px;
+    }
+
+    .card-insight p:last-child { margin-bottom: 0; }
+
+    /* Fireside quote */
+    .card-quote {
+      border-left: 2px solid var(--accent);
+      padding: 3px 0 3px 14px;
+      margin: 17px 0 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 13.5px;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.62;
+    }
+
+    /* Rapid Fire fun fact */
+    .card-funfact {
+      margin-top: 16px;
+      padding-top: 13px;
+      border-top: 1px solid var(--bg-deep);
+    }
+
+    .funfact-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .card-funfact p {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1060px) {
+      .interviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .interview-card.fireside-chat,
+      .interview-card.rapid-fire {
+        grid-column: span 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .interviews-wrap {
+        padding: 36px 20px 100px;
+      }
+      .interviews-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .fireside-images { height: 196px; }
+      .rapid-images    { height: 176px; }
+    }
+  </style>
 </head>
 <body>
+
   <nav>
     <a href="../index.html" class="nav-logo">Annie Sweta Kaur</a>
     <ul class="nav-links">
@@ -23,45 +267,149 @@
         </ul>
       </li>
       <li><a href="../about.html">about</a></li>
-      <li><a href="#" target="_blank">resume</a></li>
-      <li><a href="#" target="_blank">linkedin</a></li>
-      <li><a href="mailto:#">email</a></li>
+      <li><a href="../Annie Sweta Kaur Resume.pdf" target="_blank">resume</a></li>
+      <li><a href="https://www.linkedin.com/in/annie-kaur-89a13a104/" target="_blank">linkedin</a></li>
+      <li><a href="mailto:sk5597@columbia.edu">email</a></li>
     </ul>
   </nav>
 
-  <div class="project-page">
-    <a href="../index.html" class="back-link">← back to home</a>
+  <div class="interviews-wrap">
+    <a href="../index.html" class="interviews-back">← back to home</a>
 
-    <div class="project-icon hero-icon">
-      <img src="../images/Executive Interview Series Icon.png" alt="Executive interviews" />
+    <div class="interviews-header">
+      <div class="interviews-icon">
+        <img src="../images/Executive Interview Series Icon.png" alt="Executive interviews" />
+      </div>
+      <h1>Executive Interviews</h1>
+      <p class="tagline">listening to how leaders actually decide</p>
     </div>
 
-    <h1>executive interviews</h1>
-    <p class="tagline">listening to how leaders actually decide</p>
+    <div class="interviews-grid">
 
-    <div class="meta-row">
-      <div><strong>role</strong>researcher</div>
-      <div><strong>method</strong>1:1 interviews</div>
-      <div><strong>output</strong>themes & frameworks</div>
+      <!-- ── Fireside Chat — Rajan Patel ── -->
+      <article class="interview-card fireside-chat">
+        <div class="card-images fireside-images">
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Rajan%20Patel%20Image%201.jpg" alt="With Rajan Patel" style="object-position: top center;" />
+          </div>
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Rajan%20Patel%20Image%202.jpg" alt="Event context" style="object-position: bottom center;" />
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="interview-type">Virtual Fireside Chat</span>
+          <p class="card-name">Rajan Patel</p>
+          <p class="card-role">VP of Search · Google</p>
+          <div class="card-rule"></div>
+          <div class="card-insight">
+            <p>AI is redefining search from retrieving information to answering complex, multi-step questions.</p>
+            <p>Building for billions requires constant trade-offs between speed and trust.</p>
+          </div>
+          <blockquote class="card-quote">
+            "There's no single right answer—just constant trade-offs."
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- ── Fireside Chat — Brendan Riley ── -->
+      <article class="interview-card fireside-chat">
+        <div class="card-images fireside-images">
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Brendan%20Riley%20Image%201.jpg" alt="With Brendan Riley" />
+          </div>
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Brendan%20Riley%20Image%202.PNG" alt="Event context" />
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="interview-type">Fireside Chat</span>
+          <p class="card-name">Brendan Riley</p>
+          <p class="card-role">SVP, Global Communications · Estée Lauder</p>
+          <div class="card-rule"></div>
+          <div class="card-insight">
+            <p>Brand reputation today is shaped in real time across digital ecosystems.</p>
+            <p>AI is transforming how consumers discover and connect with brands.</p>
+          </div>
+          <blockquote class="card-quote">
+            "Great communication starts with genuine passion for the work."
+          </blockquote>
+        </div>
+      </article>
+
+      <!-- ── Rapid Fire — Amanda Smith ── -->
+      <article class="interview-card rapid-fire">
+        <div class="card-images rapid-images">
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Amanda%20Smith.jpg" alt="Amanda Smith" />
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="interview-type">Rapid Fire</span>
+          <p class="card-name">Amanda Smith</p>
+          <p class="card-role">CEO · Fairchild Media</p>
+          <div class="card-rule"></div>
+          <div class="card-insight">
+            <p>Strong editorial brands balance honest coverage with long-term credibility.</p>
+            <p>AI is most powerful as a "second set of eyes," not a replacement for judgment.</p>
+          </div>
+          <div class="card-funfact">
+            <span class="funfact-label">✦ &nbsp;fun fact</span>
+            <p>Favorite brand right now: Fendi.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Rapid Fire — Brant Cryder ── -->
+      <article class="interview-card rapid-fire">
+        <div class="card-images rapid-images">
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Brant%20Cryder.jpg" alt="Brant Cryder" />
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="interview-type">Rapid Fire</span>
+          <p class="card-name">Brant Cryder</p>
+          <p class="card-role">President · Saint Laurent Americas</p>
+          <div class="card-rule"></div>
+          <div class="card-insight">
+            <p>Luxury is increasingly defined by experience, not just product.</p>
+            <p>Retail execution remains one of the most powerful drivers of brand perception.</p>
+          </div>
+          <div class="card-funfact">
+            <span class="funfact-label">✦ &nbsp;fun fact</span>
+            <p>Coffee order: plain black.</p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Rapid Fire — Philippe Blondiaux ── -->
+      <article class="interview-card rapid-fire">
+        <div class="card-images rapid-images">
+          <div class="img-wrap">
+            <img src="../images/executive%20interviews/Philippe%20Blondiaux.jpg" alt="Philippe Blondiaux" />
+          </div>
+        </div>
+        <div class="card-body">
+          <span class="interview-type">Rapid Fire</span>
+          <p class="card-name">Philippe Blondiaux</p>
+          <p class="card-role">Global CFO · Chanel</p>
+          <div class="card-rule"></div>
+          <div class="card-insight">
+            <p>Financial discipline in luxury is about long-term brand equity, not short-term growth.</p>
+            <p>Consistency across markets is critical to maintaining brand integrity.</p>
+          </div>
+          <div class="card-funfact">
+            <span class="funfact-label">✦ &nbsp;fun fact</span>
+            <p>Prefers the Chanel Boy Bag over the Classic Flap.</p>
+          </div>
+        </div>
+      </article>
+
     </div>
-
-    <h2>why</h2>
-    <p>every ai product pitch cites "what executives want." almost none of them actually start from conversations with executives. i wanted to hear, in their own words, how leaders are thinking about ai adoption — where they're excited, where they're stuck, and what they wish builders understood.</p>
-
-    <h2>what i did</h2>
-    <ul>
-      <li>conducted a series of in-depth 1:1 interviews with executives across tech, finance, and retail</li>
-      <li>developed an interview protocol that surfaced real workflows rather than buzzwords</li>
-      <li>synthesized findings into recurring themes and tensions — especially the gap between "ai strategy" at the top and tool adoption on the ground</li>
-    </ul>
-
-    <h2>what i learned</h2>
-    <p>the most interesting insights came from the moments executives paused or contradicted themselves. the stated problem ("we need better dashboards") was rarely the real problem ("i don't trust what my team is telling me"). interview craft is mostly about staying in those moments without rushing to the next question.</p>
-
-    <h2>what it shaped</h2>
-    <p>these conversations directly influenced how i think about agentic product design — especially the trust and accountability gaps that still block adoption, even when the technology is clearly good enough.</p>
   </div>
 
   <footer>made with care · 2026</footer>
+
 </body>
 </html>
+l>
