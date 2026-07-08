@@ -331,6 +331,7 @@ main {
 .project-icon img[src*="Kaisey"] { transform: scale(1.1); }
 .project-icon--exec { max-width: 320px; height: 260px; }
 .project-icon img[src*="Shopping"] { transform: scale(1); }
+.project-icon img[src*="Press Room"] { transform: scale(1.35); }
 
 .project-label {
   display: inline-block;
