@@ -332,6 +332,8 @@ main {
 .project-icon--exec { max-width: 320px; height: 260px; }
 .project-icon img[src*="Shopping"] { transform: scale(1); }
 .project-icon--press-room { max-width: 320px; height: 260px; }
+.project-icon--press-room img,
+.project-page .hero-icon img[src*="Press Room"] { mix-blend-mode: multiply; }
 
 .project-label {
   display: inline-block;
