@@ -37,30 +37,24 @@
     </div>
 
     <h1><span>The Gemini Press Room</span> <span class="accent">an automated AI visibility desk</span></h1>
-    <p class="tagline">A live intelligence report that tracks where Gemini appears — and where it doesn't — across the AI-generated answers that shape how people discover products. Built in 48 hours at the Profound Hackathon.</p>
+    <p class="tagline">Ten hours. One builder. A competitive intelligence desk that never stops publishing.</p>
+    <p>The Press Room is a live competitive intelligence dashboard that tracks how AI answer engines — ChatGPT, Claude, Gemini, and others — cite and rank brands inside their generated answers. Built solo at Profound's Marketing Engineering Hackathon, it applies traditional competitive intelligence methodology — market share tracking, competitor benchmarking, source attribution — to an entirely new category: answer-engine visibility. Standings, leaks, sourcing, and a drafted response, refreshed from live data.</p>
 
     <div class="meta-row">
       <div><strong>role</strong>sole builder — pipeline, data, design</div>
-      <div><strong>built at</strong>profound hackathon · 48 hours</div>
-      <div><strong>focus</strong>ai search visibility · revenue modeling · automated reporting</div>
+      <div><strong>built at</strong>profound marketing engineering hackathon</div>
+      <div><strong>focus</strong>competitive intelligence · revenue modeling · answer-engine visibility</div>
     </div>
 
     <div class="link-buttons">
       <a href="https://anniesweta2340.github.io/gemini-press-room/" target="_blank" class="link-btn">View Live Report →</a>
     </div>
 
-    <h2>The Question</h2>
-    <p>When someone asks an AI assistant "what's the best tool for coding?" or "most private AI chatbot?" — Gemini either gets recommended or it doesn't. There's no dashboard for that. No rank tracker, no alert when a competitor displaces you, no way to calculate what being buried in AI answers actually costs. The Press Room asks: what would it look like to build one?</p>
+    <h2>Why Gemini</h2>
+    <p>In business school, Claude and ChatGPT were the tools everyone defaulted to. Gemini was noticeably underrepresented in that mix, despite Google's scale and distribution advantages — a brand with every structural reason to lead the category, but a competitive position that didn't match. That gap was worth a closer competitive read.</p>
 
     <h2>What I Built</h2>
-    <ul>
-      <li>A three-script Node.js pipeline that pulls live data from the Profound API, calculates revenue at risk per prompt, and uses the Claude API to draft counter-narratives</li>
-      <li>A competitive standings view showing Gemini vs. ChatGPT, Claude, Copilot, and others by share of voice and average position</li>
-      <li>A revenue-at-risk model that assigns a dollar value to each prompt where Gemini sits outside the top-3 recommendation band</li>
-      <li>A source intelligence layer showing which domains AI engines actually cite — so PR teams know exactly where to publish to move the answer</li>
-      <li>A Press Kit section where Claude drafts a counter-narrative for each underperforming prompt, grounded in the sources the engines already trust</li>
-      <li>A live refresh flow: paste a Profound API key and the report re-pulls all data client-side, no server needed</li>
-    </ul>
+    <p>A competitive intelligence dashboard with five parts, read in sequence like an analyst's briefing: a TL;DR stating the competitive thesis up front, a Standings table benchmarking the full competitive field by share of voice, a Leaks table quantifying revenue at risk from lost competitive position, an Influence Desk mapping where brand narratives actually get built (community and creator surfaces, not paid media), and a Press Kit translating diagnosis into action — drafted counter-narrative briefs targeted at the exact sources already shaping each underperforming answer.</p>
 
     <h2>How the Pipeline Works</h2>
     <p>Three scripts run in sequence and write to a shared <code>pressroom.json</code> file that the front-end reads on load.</p>
@@ -72,7 +66,7 @@
     </div>
 
     <h2>Revenue Model</h2>
-    <p>The core formula: <em>monthly mentions × inclusion gap × 15% consideration rate × 3% conversion × $240 annual seat value</em>. The inclusion gap normalizes how far outside the top-3 band each prompt sits — a brand at position 13 loses more potential consideration than one at position 4. The output is an annualized revenue exposure figure, clearly labeled as an estimate based on assumed inputs, not disclosed data.</p>
+    <p>The core formula: <em>monthly mentions × inclusion gap × 15% consideration rate × 3% conversion × $240 annual seat value</em>. The inclusion gap normalizes how far outside the top-3 band each prompt sits — a brand at position 13 loses more potential consideration than one at position 4. The output is an annualized revenue exposure figure, clearly labeled as an estimate based on assumed inputs, not disclosed data. This uses an assumed annual contract value of $240 per seat for Gemini — an estimate, not a disclosed or confirmed figure.</p>
 
     <p class="pull-quote">Every prompt where Gemini is buried below position 3 has a cost. The model makes that cost visible and sortable — so teams can prioritize by impact, not gut feel.</p>
 
@@ -80,19 +74,23 @@
     <div class="perspective-list">
       <div class="perspective-item">
         <span class="num">01</span>
-        <p><strong>Annualized, not monthly.</strong> The ACV is $240/seat/year. The mention window is 30 days. The output is how much a month of lost visibility costs projected over a year — labeled clearly to avoid the misleading impression of a recurring monthly loss.</p>
+        <p><strong>Revenue at risk is annualized, not monthly.</strong> The dollar figure represents the annualized revenue exposure implied by one month of lost competitive visibility, using an assumed $240/seat/year contract value — clearly labeled as an estimate, not a disclosed or confirmed figure.</p>
       </div>
       <div class="perspective-item">
         <span class="num">02</span>
-        <p><strong>Static fallback + live refresh.</strong> The report ships with pre-generated data and renders instantly without any API key. A live refresh mode overlays real-time data on top when a key is provided. The two modes coexist — no backend required.</p>
+        <p><strong>Product-level tracking, not parent-company rollups.</strong> "Gemini" and "Google" are tracked as separate competitive entities, as are "Claude"/"Anthropic" and "ChatGPT"/"OpenAI" — a mention of the parent company isn't necessarily a mention of the specific AI product's competitive standing.</p>
       </div>
       <div class="perspective-item">
         <span class="num">03</span>
-        <p><strong>Brand deduplication with weighted averages.</strong> The Profound data had case variants of the same brand (Mistral/MISTRAL, LLaMA/Llama, DeepSeek/Deepseek). Each pair was merged: mentions and share of voice summed, average position weighted by mentions — so standings reflect reality, not data artifacts.</p>
+        <p><strong>Caught and fixed a brand-normalization bug post-hackathon.</strong> Case-sensitive string keys were splitting single competitors into duplicate rows ("Mistral" vs. "MISTRAL"), silently understating their true market share. Traced to the aggregation logic and fixed at the source — the same data hygiene any competitive analysis depends on.</p>
       </div>
       <div class="perspective-item">
         <span class="num">04</span>
-        <p><strong>Press Kit as the report's call to action.</strong> The section where Claude-generated counter-narratives live needed to read as a destination, not just another data table. A full-bleed dark panel separates it visually from the analysis above and signals: this is where you act.</p>
+        <p><strong>The Press Kit gets its own visual treatment.</strong> It's the report's actual competitive recommendation — not another data section — so it's set apart with a distinct dark panel rather than blending into the page's default styling.</p>
+      </div>
+      <div class="perspective-item">
+        <span class="num">05</span>
+        <p><strong>Integrating a brand-new API with thin documentation.</strong> Profound's API is young, and the integration surfaced real friction beyond typical API work — sparse documentation meant more first-principles troubleshooting and direct outreach to confirm behavior that a mature, well-documented API would have made straightforward.</p>
       </div>
     </div>
 
@@ -103,7 +101,7 @@
       AI search isn't a future problem. Brands are already being recommended or ignored by AI answers at scale — and most have no infrastructure to know which, or why, or what to do about it.
     </div>
 
-    <p class="project-context">Built at the Profound Hackathon · pipeline, data integrity, design, and Press Kit shipped in 48 hours · <a href="https://anniesweta2340.github.io/gemini-press-room/" target="_blank">live report →</a></p>
+    <p class="project-context">Built at the Profound Marketing Engineering Hackathon · <a href="https://anniesweta2340.github.io/gemini-press-room/" target="_blank">live report →</a></p>
   </div>
 
   <footer>made with care · 2026</footer>
