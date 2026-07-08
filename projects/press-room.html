@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Press Room — AI Visibility Desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=37">
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="nav-logo">Annie Sweta Kaur</a>
+    <ul class="nav-links">
+      <li class="dropdown">
+        <a href="../index.html#projects">work ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="kasiey.html">kasiey — chief of staff</a></li>
+          <li><a href="executive-interviews.html">executive interviews</a></li>
+          <li><a href="instagram-unfollower.html">instagram unfollowers AI</a></li>
+          <li><a href="press-room.html">gemini press room</a></li>
+        </ul>
+      </li>
+      <li><a href="../about.html">about</a></li>
+      <li><a href="../Annie Sweta Kaur Resume.pdf" target="_blank">resume</a></li>
+      <li><a href="https://www.linkedin.com/in/annie-kaur-89a13a104/" target="_blank">linkedin</a></li>
+      <li><a href="mailto:sk5597@columbia.edu">email</a></li>
+    </ul>
+  </nav>
+
+  <div class="project-page">
+    <a href="../index.html" class="back-link">← back to home</a>
+
+    <div class="project-icon hero-icon">
+      <img src="../images/Press Room Icon.png" alt="Gemini Press Room" />
+    </div>
+
+    <h1><span>The Gemini Press Room</span> <span class="accent">an automated AI visibility desk</span></h1>
+    <p class="tagline">A live intelligence report that tracks where Gemini appears — and where it doesn't — across the AI-generated answers that shape how people discover products. Built in 48 hours at the Profound Hackathon.</p>
+
+    <div class="meta-row">
+      <div><strong>role</strong>sole builder — pipeline, data, design</div>
+      <div><strong>built at</strong>profound hackathon · 48 hours</div>
+      <div><strong>focus</strong>ai search visibility · revenue modeling · automated reporting</div>
+    </div>
+
+    <div class="link-buttons">
+      <a href="https://anniesweta2340.github.io/gemini-press-room/" target="_blank" class="link-btn">View Live Report →</a>
+    </div>
+
+    <h2>The Question</h2>
+    <p>When someone asks an AI assistant "what's the best tool for coding?" or "most private AI chatbot?" — Gemini either gets recommended or it doesn't. There's no dashboard for that. No rank tracker, no alert when a competitor displaces you, no way to calculate what being buried in AI answers actually costs. The Press Room asks: what would it look like to build one?</p>
+
+    <h2>What I Built</h2>
+    <ul>
+      <li>A three-script Node.js pipeline that pulls live data from the Profound API, calculates revenue at risk per prompt, and uses the Claude API to draft counter-narratives</li>
+      <li>A competitive standings view showing Gemini vs. ChatGPT, Claude, Copilot, and others by share of voice and average position</li>
+      <li>A revenue-at-risk model that assigns a dollar value to each prompt where Gemini sits outside the top-3 recommendation band</li>
+      <li>A source intelligence layer showing which domains AI engines actually cite — so PR teams know exactly where to publish to move the answer</li>
+      <li>A Press Kit section where Claude drafts a counter-narrative for each underperforming prompt, grounded in the sources the engines already trust</li>
+      <li>A live refresh flow: paste a Profound API key and the report re-pulls all data client-side, no server needed</li>
+    </ul>
+
+    <h2>How the Pipeline Works</h2>
+    <p>Three scripts run in sequence and write to a shared <code>pressroom.json</code> file that the front-end reads on load.</p>
+    <div class="insight-grid">
+      <div class="insight-card"><strong>refresh.mjs</strong><br>Calls Profound's visibility and citations endpoints to pull brand standings, worst-performing prompts, and top cited domains.</div>
+      <div class="insight-card"><strong>revenue_ladder.mjs</strong><br>For each prompt where Gemini sits below position 3, calculates an inclusion gap and applies a conversion model to produce an annualized revenue-at-risk figure.</div>
+      <div class="insight-card"><strong>diagnose.mjs</strong><br>Sends each underperforming prompt to the Anthropic Claude API. Claude returns a drafted counter-narrative grounded in the specific sources the engines already cite for that topic.</div>
+      <div class="insight-card"><strong>index.html</strong><br>Single-file report. Reads static data by default. Live refresh overlays real-time Profound data when an API key is provided — the two modes coexist without a backend.</div>
+    </div>
+
+    <h2>Revenue Model</h2>
+    <p>The core formula: <em>monthly mentions × inclusion gap × 15% consideration rate × 3% conversion × $240 annual seat value</em>. The inclusion gap normalizes how far outside the top-3 band each prompt sits — a brand at position 13 loses more potential consideration than one at position 4. The output is an annualized revenue exposure figure, clearly labeled as an estimate based on assumed inputs, not disclosed data.</p>
+
+    <p class="pull-quote">Every prompt where Gemini is buried below position 3 has a cost. The model makes that cost visible and sortable — so teams can prioritize by impact, not gut feel.</p>
+
+    <h2>Key Decisions</h2>
+    <div class="perspective-list">
+      <div class="perspective-item">
+        <span class="num">01</span>
+        <p><strong>Annualized, not monthly.</strong> The ACV is $240/seat/year. The mention window is 30 days. The output is how much a month of lost visibility costs projected over a year — labeled clearly to avoid the misleading impression of a recurring monthly loss.</p>
+      </div>
+      <div class="perspective-item">
+        <span class="num">02</span>
+        <p><strong>Static fallback + live refresh.</strong> The report ships with pre-generated data and renders instantly without any API key. A live refresh mode overlays real-time data on top when a key is provided. The two modes coexist — no backend required.</p>
+      </div>
+      <div class="perspective-item">
+        <span class="num">03</span>
+        <p><strong>Brand deduplication with weighted averages.</strong> The Profound data had case variants of the same brand (Mistral/MISTRAL, LLaMA/Llama, DeepSeek/Deepseek). Each pair was merged: mentions and share of voice summed, average position weighted by mentions — so standings reflect reality, not data artifacts.</p>
+      </div>
+      <div class="perspective-item">
+        <span class="num">04</span>
+        <p><strong>Press Kit as the report's call to action.</strong> The section where Claude-generated counter-narratives live needed to read as a destination, not just another data table. A full-bleed dark panel separates it visually from the analysis above and signals: this is where you act.</p>
+      </div>
+    </div>
+
+    <h2>What It Shows</h2>
+    <p>The Press Room is a proof of concept for a new category of brand intelligence: automated AI-answer monitoring. As AI-generated responses displace traditional search results, the brands that win will be the ones who can measure their AI-search presence the way they currently manage SEO — and respond when they lose ground.</p>
+
+    <div class="takeaway-box">
+      AI search isn't a future problem. Brands are already being recommended or ignored by AI answers at scale — and most have no infrastructure to know which, or why, or what to do about it.
+    </div>
+
+    <p class="project-context">Built at the Profound Hackathon · pipeline, data integrity, design, and Press Kit shipped in 48 hours · <a href="https://anniesweta2340.github.io/gemini-press-room/" target="_blank">live report →</a></p>
+  </div>
+
+  <footer>made with care · 2026</footer>
+</body>
+</html>
